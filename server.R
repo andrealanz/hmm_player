@@ -1,12 +1,18 @@
 library(shiny)
-
+source("R/midi_to_wav.R")
 
 shinyServer(function(input, output) {
   
-  observeEvent(input$play, {
-    insertUI(selector = "#play",
-             where = "afterEnd",
-             ui = tags$audio(src = "song.mp3", type = "audio/mp3", autoplay = NA, controls = NA)  
-             )
+  observeEvent(input$file, {
+     inFile <- input$file
+     output_name = paste("output", toString(sample.int(1000,1)), ".wav", sep = "")
+     output_path = paste("www/", output_name, sep = "")
+     midi_to_wav(inFile$datapath, output = output_path)
+     
+     output$audio_ui = renderUI(tags$div(id = "audio_player",
+                            tags$audio(src = output_name, type = "audio/wav", autoplay = NA, controls = NA)
+     ))
+     
   })
+  
 })

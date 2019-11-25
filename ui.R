@@ -1,11 +1,25 @@
 library(shiny)
+library(shinyjs)
 
 #solution influenced by https://github.com/XD-DENG/Reactively-Play-Audio-Shiny.git
 
 shinyUI(
-  basicPage(
-    actionButton("play", "Play")
+  fluidPage(
+    titlePanel("HMM Player"),
+    
+    sidebarLayout(
+      
+      sidebarPanel(  
+        fileInput("file", "Upload MIDI", multiple = FALSE, accept = c("mid", "midi"))
+      ),
+      
+      mainPanel( 
+        uiOutput("audio_ui")
+      )
+      
+    )
   )
 )
+
 
 

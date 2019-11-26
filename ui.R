@@ -1,5 +1,4 @@
 library(shiny)
-library(shinyjs)
 
 #solution influenced by https://github.com/XD-DENG/Reactively-Play-Audio-Shiny.git
 

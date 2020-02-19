@@ -3,8 +3,6 @@ library(stringr)
 source("R/midicsv.R")
 source("R/csvmidi.R")
 
-use_python("C:\\Users\\lanza\\Anaconda3\\python.exe")
-
 home_dir = getwd()
 setwd("src/hmm")
 source_python("hmm.py")
